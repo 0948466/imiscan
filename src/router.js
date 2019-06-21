@@ -23,5 +23,35 @@ export default new Router({
       name: 'log-in',
       component: () => import(/* webpackChunkName: "about" */ './views/LogIn.vue'),
     },
+    {
+      path: '/restore',
+      name: 'restore',
+      component: () => import(/* webpackChunkName: "about" */ './views/Restore.vue'),
+    },
+    {
+      path: '/prepare',
+      name: 'prepare',
+      component: () => import(/* webpackChunkName: "about" */ './views/Prepare.vue'),
+    },
+    {
+      path: '/find-qr-code',
+      name: 'find-qr-code',
+      component: () => import(/* webpackChunkName: "about" */ './views/FindQrCode.vue'),
+    },
+    {
+      path: '/scan-qr-code',
+      name: 'scan-qr-code',
+      component: () => import(/* webpackChunkName: "about" */ './views/ScanQrCode.vue'),
+    },
+    {
+      path: '/get-connected',
+      name: 'get-connected',
+      component: () => import(/* webpackChunkName: "about" */ './views/GetConnected.vue'),
+    },
+    {
+      path: '/error-qr-code',
+      name: 'error-qr-code',
+      component: () => import(/* webpackChunkName: "about" */ './views/ErrorQrCode.vue'),
+    },
   ],
 });

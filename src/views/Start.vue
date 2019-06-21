@@ -28,6 +28,18 @@
 <script>
 export default {
   name: 'StartVue',
+  mounted() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+    console.log(vh)
+
+    window.addEventListener('resize', () => {
+      console.log(123)
+      // We execute the same script as before
+      vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
+  }
 };
 </script>
 

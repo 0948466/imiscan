@@ -20,6 +20,9 @@ export default {
 
 <style lang="scss" scoped>
   .icon-back {
+    position: absolute;
+    top: 27px;
+    left: 27px;
     display: block;
     padding: 10px;
     width: 12px;
