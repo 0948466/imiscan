@@ -37,15 +37,21 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import IconBack from '@/components/IconBack.vue';
 
 export default {
   name: 'LogInVue',
   components: { IconBack },
   methods: {
+    ...mapActions([
+      'AUTH_SING_IN',
+
+    ]),
     onFormSubmit() {
       this.$screenfullInit();
-      this.$router.push({ name: 'prepare' });
+      this.AUTH_SING_IN();
+      // this.$router.push({ name: 'prepare' });
     },
   },
 };

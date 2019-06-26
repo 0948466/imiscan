@@ -5,7 +5,6 @@ import ScannerGetConnected from '../assets/img/scanner/get-connected.png';
 import ScannerPrepare from '../assets/img/scanner/prepare.png';
 
 function preload(...images) {
-  console.log(images);
   images.forEach((image) => {
     const img = new Image();
     img.src = image;

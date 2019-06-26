@@ -1,3 +1,3 @@
 export default {
-  channels: '/api/v1/channels',
+  singIn: 'https://imigize.ru//imigize/user/login',
 };

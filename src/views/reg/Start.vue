@@ -10,7 +10,7 @@
       <div class="start__btn-wrap">
         <router-link
           class="btn btn_white"
-          :to="{name: 'sing-in'}"
+          :to="{name: 'sing-up'}"
         >
           Sing Up
         </router-link>
