@@ -3,7 +3,7 @@
     <div class="completed__container container ">
       <icon-back />
       <img
-        src="../assets/img/feet/03-sc-feet.png"
+        src="../assets/img/feet/09-completed.png"
         alt="Feet"
       >
       <p class="completed__text text text_up">

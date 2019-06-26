@@ -10,48 +10,56 @@ import { mapState, mapMutations } from 'vuex';
 
 export default {
   name: 'App',
-  computed: mapState(['error']),
+  computed: mapState(['error', 'user']),
   watch: {
-    error(newValue, oldValue) {
-      console.log(newValue);
-      console.log(oldValue);
-
+    error(newValue) {
       if (newValue) {
-        this.$notify({
-          group: 'foo',
-          type: 'error',
-          duration: 2000,
-          title: '<h3 class="notification__title">Error</h3>',
-          text: `<p class="notification__text">${this.error}</p>`,
-        });
+        this.showNotify('error', 'Error', this.error);
 
         this.errorChange(false);
       }
     },
+    user(newValue) {
+      if (newValue) {
+        this.showNotify('success', 'Success', 'login successful');
+      }
+    },
   },
-  methods: mapMutations(['errorChange']),
+
+  methods: {
+    ...mapMutations(['errorChange']),
+    showNotify(type, title, text) {
+      this.$notify({
+        group: 'foo',
+        type,
+        duration: 2000,
+        title,
+        text,
+      });
+    },
+  },
+
 };
 </script>
 
 <style lang="scss">
   @import "./scss/init";
 
-#app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  font-family: 'Roboto Condensed', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Roboto Condensed', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-  .notification {
-    &__title {
-      margin-bottom: 5px;
-      font-size: 18px;
-    }
-    &__text {
-      font-size: 16px;
-    }
+  .notification-title {
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+
+  .notification-content {
+    font-size: 16px;
   }
 </style>

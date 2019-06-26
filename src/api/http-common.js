@@ -1,5 +1,5 @@
 export default (urlFrom, method = 'POST', params = {}) => {
-  const baseUrl = (process.env.NODE_ENV !== 'development') ? '' : 'http://localhost:3004';
+  const baseUrl = (process.env.NODE_ENV !== 'development') ? 'https://imigize.ru' : 'http://localhost:3004';
   let body = null;
   let url = `${baseUrl}${urlFrom}`;
   if (method === 'POST') {
@@ -12,9 +12,7 @@ export default (urlFrom, method = 'POST', params = {}) => {
   if (method === 'GET') {
     url = new URL(url);
     Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-    console.log(url);
   }
-
 
   return fetch(url, {
     method,

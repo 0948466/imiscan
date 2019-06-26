@@ -16,32 +16,32 @@ export default new Router({
     {
       path: '/sing-up',
       name: 'sing-up',
-      component: () => import(/* webpackChunkName: "about" */ './views/reg/SingUp.vue'),
+      component: () => import(/* webpackChunkName: "Sing-up" */ './views/reg/SingUp.vue'),
     },
     {
       path: '/log-in',
       name: 'log-in',
-      component: () => import(/* webpackChunkName: "about" */ './views/reg/LogIn.vue'),
+      component: () => import(/* webpackChunkName: "Log-in" */ './views/reg/LogIn.vue'),
     },
     {
       path: '/restore',
       name: 'restore',
-      component: () => import(/* webpackChunkName: "about" */ './views/reg/Restore.vue'),
+      component: () => import(/* webpackChunkName: "Restore" */ './views/reg/Restore.vue'),
     },
     {
       path: '/prepare',
       name: 'prepare',
-      component: () => import(/* webpackChunkName: "about" */ './views/01_Prepare.vue'),
+      component: () => import(/* webpackChunkName: "Prepare" */ './views/01_Prepare.vue'),
     },
     {
       path: '/find-qr-code',
       name: 'find-qr-code',
-      component: () => import(/* webpackChunkName: "about" */ './views/02_FindQrCode.vue'),
+      component: () => import(/* webpackChunkName: "Find-qr-code" */ './views/02_FindQrCode.vue'),
     },
     {
       path: '/scan-qr-code',
       name: 'scan-qr-code',
-      component: () => import(/* webpackChunkName: "about" */ './views/ScanQrCode.vue'),
+      component: () => import(/* webpackChunkName: "Scan-qr-code" */ './views/ScanQrCode.vue'),
     },
     {
       path: '/start',
@@ -51,22 +51,22 @@ export default new Router({
     {
       path: '/error-qr-code',
       name: 'error-qr-code',
-      component: () => import(/* webpackChunkName: "about" */ './views/ErrorQrCode.vue'),
+      component: () => import(/* webpackChunkName: "Error-qr-code" */ './views/ErrorQrCode.vue'),
     },
     {
       path: '/description',
       name: 'description',
-      component: () => import(/* webpackChunkName: "about" */ './views/03_Description.vue'),
+      component: () => import(/* webpackChunkName: "Description" */ './views/03_Description.vue'),
     },
     {
       path: '/scan',
       name: 'scan',
-      component: () => import(/* webpackChunkName: "about" */ './views/04_Scan.vue'),
+      component: () => import(/* webpackChunkName: "Scan" */ './views/04_Scan.vue'),
     },
     {
       path: '/completed',
       name: 'completed',
-      component: () => import(/* webpackChunkName: "about" */ './views/09_Completed.vue'),
+      component: () => import(/* webpackChunkName: "Completed" */ './views/09_Completed.vue'),
     },
   ],
 });

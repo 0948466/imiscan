@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import IconBack from '@/components/IconBack.vue';
 
 export default {
@@ -50,7 +50,14 @@ export default {
     email: null,
     password: null,
   }),
+  computed: {
+    ...mapGetters(['user']),
+  },
+  mounted() {
+    this.userExit();
+  },
   methods: {
+    ...mapMutations(['userExit']),
     ...mapActions([
       'AUTH_SING_IN',
 
@@ -64,7 +71,9 @@ export default {
 
       await this.AUTH_SING_IN(params);
 
-      // this.$router.push({ name: 'prepare' });
+      if (this.user) {
+        this.$router.push({ name: 'prepare' });
+      }
     },
   },
 };

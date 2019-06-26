@@ -1,6 +1,11 @@
 <template>
   <p class="link-for-mobile text">
-    If you are not in a store, use <a href="#" class="link" target="_blank" rel="noopener">Mobile App</a>
+    If you are not in a store, use <a
+      href="#"
+      class="link"
+      target="_blank"
+      rel="noopener"
+    >Mobile App</a>
   </p>
 </template>
 

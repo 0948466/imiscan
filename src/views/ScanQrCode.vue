@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import IconBack from '@/components/IconBack.vue';
 import { QrcodeStream } from 'vue-qrcode-reader';
+import IconBack from '@/components/IconBack.vue';
 
 export default {
   name: 'ScanQrCode',

@@ -3,7 +3,7 @@
     <div class="description__container container ">
       <icon-back />
       <img
-        src="../assets/img/feet/03-sc-feet.png"
+        src="../assets/img/feet/03-desc.png"
         alt="Feet"
       >
       <p class="description__text text text_up">

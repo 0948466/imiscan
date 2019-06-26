@@ -41,6 +41,7 @@
   text-decoration: none;
   text-transform: uppercase;
   border: none;
+  user-select: none;
   &:hover {
     filter: brightness(120%);
   }

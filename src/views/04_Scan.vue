@@ -3,7 +3,7 @@
     <div class="scan__container container ">
       <icon-back />
       <img
-        src="../assets/img/feet/03-sc-feet.png"
+        src="../assets/img/feet/04-start.png"
         alt="Feet"
       >
       <p class="scan__text text text_up">
@@ -20,12 +20,12 @@
 </template>
 
 <script>
-  import IconBack from '@/components/IconBack.vue';
+import IconBack from '@/components/IconBack.vue';
 
-  export default {
-    name: 'Scan',
-    components: { IconBack },
-  };
+export default {
+  name: 'Scan',
+  components: { IconBack },
+};
 </script>
 
 <style lang="scss" scoped>

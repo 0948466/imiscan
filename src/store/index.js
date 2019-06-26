@@ -14,6 +14,7 @@ export default new Vuex.Store({
   state: {
     loading: false,
     error: null,
+    user: null,
   },
   getters: {
     isLoading: state => state.loading,
@@ -30,9 +31,12 @@ export default new Vuex.Store({
     errorChange(state, payload) {
       state.error = payload;
     },
+    userExit(state) {
+      state.user = null;
+    },
   },
   actions: {
-    async [AUTH_SING_IN]({ dispatch, commit }, params) {
+    async [AUTH_SING_IN]({ commit }, params) {
       const result = await HTTP(URL.singIn, 'GET', params);
       if (result && result.error) {
         commit('errorChange', result.error);
