@@ -13,19 +13,32 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     loading: false,
+    error: null,
   },
   getters: {
     isLoading: state => state.loading,
     user: state => state.user,
+    error: state => state.error,
   },
   mutations: {
     [LOADING](state, payload) {
       state.loading = payload;
     },
+    userChange(state, payload) {
+      state.user = payload;
+    },
+    errorChange(state, payload) {
+      state.error = payload;
+    },
   },
   actions: {
-    async [AUTH_SING_IN] ({ dispatch, commit }) {
-      const result = await HTTP(URL.singIn); // дожидаемся завершения действия `actionA`
+    async [AUTH_SING_IN]({ dispatch, commit }, params) {
+      const result = await HTTP(URL.singIn, 'GET', params);
+      if (result && result.error) {
+        commit('errorChange', result.error);
+      } else {
+        commit('userChange', result.user);
+      }
       console.log(result);
     },
   },

@@ -1,12 +1,24 @@
-export default (urlFrom, method = 'POST', params = []) => {
-  const headers = new Headers();
-  headers.append('Content-Type', 'application/json');
+export default (urlFrom, method = 'POST', params = {}) => {
+  const baseUrl = (process.env.NODE_ENV !== 'development') ? '' : 'http://localhost:3004';
+  let body = null;
+  let url = `${baseUrl}${urlFrom}`;
+  if (method === 'POST') {
+    const formData = new FormData();
+    Object.keys(params).forEach((key) => {
+      formData.append(key, params[key]);
+    });
+    body = formData;
+  }
+  if (method === 'GET') {
+    url = new URL(url);
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+    console.log(url);
+  }
 
-  const body = (method !== 'GET') ? JSON.stringify(params) : null;
 
-  return fetch(urlFrom, {
+  return fetch(url, {
     method,
-    headers,
+    mode: 'cors',
     body,
   })
     .then(response => response.json())

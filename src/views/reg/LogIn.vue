@@ -8,15 +8,18 @@
         @submit.prevent="onFormSubmit"
       >
         <input
+          v-model="email"
           class="input"
-          type="text"
-          placeholder="Login"
+          type="email"
+          placeholder="Email"
           required
         >
         <input
+          v-model="password"
           class="input"
           type="password"
           placeholder="Password"
+          autocomplete="current-password"
           required
         >
         <router-link
@@ -43,14 +46,24 @@ import IconBack from '@/components/IconBack.vue';
 export default {
   name: 'LogInVue',
   components: { IconBack },
+  data: () => ({
+    email: null,
+    password: null,
+  }),
   methods: {
     ...mapActions([
       'AUTH_SING_IN',
 
     ]),
-    onFormSubmit() {
+    async onFormSubmit() {
       this.$screenfullInit();
-      this.AUTH_SING_IN();
+      const params = {
+        email: this.email,
+        password: this.password,
+      };
+
+      await this.AUTH_SING_IN(params);
+
       // this.$router.push({ name: 'prepare' });
     },
   },
