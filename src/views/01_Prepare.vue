@@ -22,12 +22,13 @@
 
 
         <img
+          class="prepare__img"
           src="../assets/img/scanner/prepare.png"
           alt="Prepare for scanning"
         >
         <button
           type="submit"
-          class="btn btn_blue prepare__btn"
+          class="btn btn_blue btn_bottom prepare__btn "
         >
           Start scanning
         </button>
@@ -66,8 +67,15 @@ export default {
       letter-spacing: 0.55px;
       color: $color-text;
     }
+    &__form {
+      flex-grow: 1;
+    }
+    &__img {
+      margin-bottom: 20px;
+    }
 
     &__checkbox__text {
+      margin-bottom: 22px;
       font-size: 20px;
       font-weight: normal;
       font-style: normal;

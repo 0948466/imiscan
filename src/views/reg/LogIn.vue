@@ -44,8 +44,8 @@ export default {
   components: { IconBack },
   methods: {
     onFormSubmit() {
-      console.log(123);
-      this.$router.push({ name: 'get-connected' });
+      this.$screenfullInit();
+      this.$router.push({ name: 'prepare' });
     },
   },
 };
@@ -54,21 +54,26 @@ export default {
 <style lang="scss" scoped>
   .log-in {
     background-color: $bg-pages;
+
     &__container {
       padding-top: 123px;
     }
+
     &__form {
       display: flex;
       flex-direction: column;
       max-width: 252px;
       width: 100%;
     }
+
     .input {
       margin-bottom: 17px;
+
       &:not(:last-of-type) {
-        margin-bottom: 23 px;
+        margin-bottom: 23px;
       }
     }
+
     &__btn {
       margin-top: 50px;
     }

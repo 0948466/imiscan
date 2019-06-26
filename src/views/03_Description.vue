@@ -1,17 +1,17 @@
 <template>
-  <section class="find-qr-code wrapper">
-    <div class="find-qr-code__container container ">
+  <section class="description wrapper">
+    <div class="description__container container ">
       <icon-back />
       <img
-        src="../assets/img/scanner/find-qr-code.png"
-        alt="Prepare for scanning"
+        src="../assets/img/feet/03-sc-feet.png"
+        alt="Feet"
       >
-      <p class="find-qr-code__text text">
-        Scan QR Code
+      <p class="description__text text text_up">
+        Don't move
       </p>
       <router-link
         class="btn btn_blue btn_bottom"
-        :to="{name: 'scan-qr-code'}"
+        :to="{name: 'scan'}"
       >
         Next
       </router-link>
@@ -23,13 +23,13 @@
 import IconBack from '@/components/IconBack.vue';
 
 export default {
-  name: 'FindQrCode',
+  name: 'Description',
   components: { IconBack },
 };
 </script>
 
 <style lang="scss" scoped>
-  .find-qr-code {
+  .description {
     background-color: $bg-pages;
     &__container {
       padding-top: 118px;

@@ -76,6 +76,7 @@ export default {
     },
     onFormQrCodeSubmit() {
       console.log(123);
+      this.$router.push({ name: 'description' });
     },
 
   },

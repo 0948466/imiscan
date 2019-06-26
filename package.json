@@ -6,10 +6,13 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "yarn build && now --public && now --target production"
+    "surge": "surge ./dist --domain https://imiscan.surge.sh",
+    "deploy": "yarn build && yarn copy && yarn surge",
+    "copy": "cp dist/index.html dist/200.html"
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "screenfull": "^4.2.0",
     "vee-validate": "^2.2.11",
     "vue": "^2.6.10",
     "vue-qrcode-reader": "^2.0.1",

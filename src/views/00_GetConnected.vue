@@ -1,7 +1,6 @@
 <template>
   <section class="get-connected wrapper">
     <div class="fget-connected__container container ">
-      <icon-back />
       <div class="text-wrap">
         <h1 class="get-connected__title title">
           If you are in a store equipped
@@ -18,22 +17,29 @@
         src="../assets/img/scanner/get-connected.png"
         alt="Prepare for scanning"
       >
-      <router-link
+      <a
+        href="/start"
         class="btn btn_blue btn_bottom"
-        :to="{name: 'prepare'}"
+        @click.prevent="onGetConnectBtnClick"
       >
         Get Connected
-      </router-link>
+      </a>
     </div>
   </section>
 </template>
 
 <script>
-import IconBack from '@/components/IconBack.vue';
 import LinkForMobile from '@/components/LinkForMobile.vue';
 
 export default {
-  name: 'GetConnected', components: { LinkForMobile, IconBack },
+  name: 'GetConnected',
+  components: { LinkForMobile },
+  methods: {
+    onGetConnectBtnClick() {
+      this.$screenfullInit();
+      this.$router.push({ name: 'start' });
+    },
+  },
 };
 </script>
 
@@ -42,6 +48,7 @@ export default {
    background-color: $bg-pages;
    &__title {
      margin-bottom: 35px;
+     text-align: justify;
    }
    &__img {
      margin-top: auto;

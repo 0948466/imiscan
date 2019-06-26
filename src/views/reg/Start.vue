@@ -28,18 +28,6 @@
 <script>
 export default {
   name: 'StartVue',
-  mounted() {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-    console.log(vh)
-
-    window.addEventListener('resize', () => {
-      console.log(123)
-      // We execute the same script as before
-      vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
-    });
-  }
 };
 </script>
 
@@ -47,7 +35,7 @@ export default {
   .start {
     background-color: $color-main;
     &__container {
-      background: url("../assets/img/bg/start-bg.png") no-repeat bottom;
+      background: url("../../assets/img/bg/start-bg.png") no-repeat bottom;
       background-size: 75%;
     }
     &__title {

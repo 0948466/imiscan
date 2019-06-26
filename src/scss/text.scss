@@ -4,7 +4,7 @@
   font-style: normal;
   font-stretch: condensed;
   line-height: 1.43;
-  letter-spacing: 0.46px;
+  letter-spacing: 0.023em;
   color: $color-text;
 }
 .title-small {
@@ -26,8 +26,29 @@
   line-height: 1.61;
   letter-spacing: 1.72px;
   color: $color-text;
+  &_up {
+    text-transform: uppercase;
+  }
 }
 
 .text-wrap {
-  max-width: 250px;
+  max-width: 252px;
+}
+
+.link-small {
+  font-size: 11.5px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: condensed;
+  line-height: 1.83;
+  letter-spacing: 0.26px;
+  text-align: center;
+  color: #4b9fb5;
+  text-decoration: none;
+}
+
+.link {
+  color: #3aa0b3;
+  cursor: pointer;
+  text-decoration: none;
 }
