@@ -83,7 +83,6 @@ export default {
       }
     },
     async onRestoreLinkClick() {
-      // TODO валидация email
       if (this.email) {
         const params = {
           email: this.email.trim(),

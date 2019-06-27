@@ -12,10 +12,19 @@
           {{ error }}
         </p>
 
-        <qrcode-stream
-          @decode="onDecode"
-          @init="onInit"
-        />
+        <div class="scan-qr-code__qrcode-stream">
+          <qrcode-stream
+            @decode="onDecode"
+            @init="onInit"
+          >
+            <div
+              v-if="loading"
+              class="loading-indicator"
+            >
+              Loading...
+            </div>
+          </qrcode-stream>
+        </div>
 
         <input
           v-model="result"
@@ -26,7 +35,7 @@
         >
         <button
           type="submit"
-          class="btn btn_blue btn_bottom"
+          class="btn btn_blue"
         >
           Next
         </button>
@@ -45,6 +54,7 @@ export default {
   data: () => ({
     result: '',
     error: '',
+    loading: false,
   }),
   methods: {
     onDecode(result) {
@@ -52,6 +62,7 @@ export default {
       this.$router.push({ name: 'description' });
     },
     async onInit(promise) {
+      this.loading = true;
       try {
         await promise;
       } catch (error) {
@@ -68,6 +79,8 @@ export default {
         } else if (error.name === 'StreamApiNotSupportedError') {
           this.error = 'ERROR: Stream API is not supported in this browser';
         }
+      } finally {
+        this.loading = false;
       }
     },
     onFormQrCodeSubmit() {
@@ -85,10 +98,54 @@ export default {
       flex-direction: column;
       flex-grow: 1;
       align-items: center;
+      padding-top: 30px;
+    }
+    &__qrcode-stream {
+      margin-top: auto;
+      margin-bottom: auto;
     }
     &__input {
+      margin-top: auto;
       margin-bottom: 22px;
       max-width: 252px;
     }
+  }
+  .qrcode-stream__camera,
+  .qrcode-stream__pause-frame {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    box-sizing: border-box;
+    background-size: cover;
+    max-width: inherit !important;
+    max-height: inherit !important;
+  }
+
+  .qrcode-stream__inner-wrapper {
+    position: inherit !important;
+    max-width: inherit !important;
+    max-height: inherit !important;
+    z-index: inherit !important;
+  }
+</style>
+<style>
+  .qrcode-stream__camera,
+  .qrcode-stream__pause-frame {
+    min-width: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    background-size: cover;
+    max-width: inherit !important;
+    max-height: inherit !important;
+  }
+
+  .qrcode-stream__inner-wrapper {
+    position: inherit !important;
+    max-width: inherit !important;
+    max-height: inherit !important;
+    z-index: inherit !important;
   }
 </style>
