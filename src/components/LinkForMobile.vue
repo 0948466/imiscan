@@ -17,7 +17,6 @@ export default {
 
 <style lang="scss" scoped>
   .link-for-mobile {
-    margin-bottom: 20px;
     line-height: 1.79;
     letter-spacing: 0.023em;
   }

@@ -73,8 +73,6 @@ export default {
 
 <style lang="scss" scoped>
   .sing-up {
-    background-color: $bg-pages;
-
     &__container {
       padding-top: 123px;
     }

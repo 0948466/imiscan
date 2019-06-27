@@ -25,6 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   margin-right: auto;
   margin-left: auto;
   max-width: 189px;
@@ -89,7 +90,7 @@ a:hover {
   max-width: 225px;
   box-sizing: border-box;
   &:not(:last-of-type) {
-    margin-bottom: 22px;
+    margin-bottom: 3vh;
   }
   .checkbox {
     display: none;

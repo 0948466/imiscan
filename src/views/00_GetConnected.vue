@@ -1,6 +1,6 @@
 <template>
   <section class="get-connected wrapper">
-    <div class="fget-connected__container container ">
+    <div class="get-connected__container container ">
       <div class="text-wrap">
         <h1 class="get-connected__title title">
           If you are in a store equipped
@@ -47,12 +47,12 @@ export default {
  .get-connected {
    background-color: $bg-pages;
    &__title {
-     margin-bottom: 35px;
+     margin-bottom: 5vh;
      text-align: justify;
    }
    &__img {
+     padding: 20px 0;
      margin-top: auto;
-     margin-bottom: 29px;
    }
  }
 </style>

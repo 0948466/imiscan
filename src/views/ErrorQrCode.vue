@@ -33,7 +33,6 @@ export default {
 
 <style lang="scss" scoped>
   .error-qr-code {
-    background-color: $bg-pages;
     &__container {
       padding-top: 112px;
     }

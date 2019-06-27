@@ -81,7 +81,6 @@ export default {
 
 <style lang="scss" scoped>
   .log-in {
-    background-color: $bg-pages;
 
     &__container {
       padding-top: 123px;

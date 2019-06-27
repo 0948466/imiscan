@@ -82,10 +82,8 @@ export default {
 
 <style lang="scss" scoped>
   .prepare {
-    background-color: $bg-pages;
-
     &__title {
-      margin-bottom: 30px;
+      margin-bottom: 4vh;
       font-size: 24px;
       font-weight: bold;
       font-style: normal;

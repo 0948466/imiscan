@@ -30,7 +30,6 @@ export default {
 
 <style lang="scss" scoped>
   .description {
-    background-color: $bg-pages;
     &__container {
       padding-top: 118px;
     }

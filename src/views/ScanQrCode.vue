@@ -84,6 +84,5 @@ export default {
 
 <style lang="scss" scoped>
   .scan-qr-code {
-    background-color: $bg-pages;
   }
 </style>
