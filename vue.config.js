@@ -9,7 +9,7 @@ module.exports = {
             {
               loader: 'url-loader',
               options: {
-                limit: 45096,
+                limit: 71096,
                 fallback: {
                   loader: 'file-loader',
                   options: {

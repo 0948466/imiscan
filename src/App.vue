@@ -1,44 +1,16 @@
 <template>
   <div id="app">
     <router-view />
-    <notifications group="foo" />
+    <notify />
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import Notify from '@/components/Notify.vue';
 
 export default {
   name: 'App',
-  computed: mapState(['error', 'user']),
-  watch: {
-    error(newValue) {
-      if (newValue) {
-        this.showNotify('error', 'Error', this.error);
-
-        this.errorChange(false);
-      }
-    },
-    user(newValue) {
-      if (newValue) {
-        this.showNotify('success', 'Success', 'login successful');
-      }
-    },
-  },
-
-  methods: {
-    ...mapMutations(['errorChange']),
-    showNotify(type, title, text) {
-      this.$notify({
-        group: 'foo',
-        type,
-        duration: 2000,
-        title,
-        text,
-      });
-    },
-  },
-
+  components: { Notify },
 };
 </script>
 
@@ -54,12 +26,4 @@ export default {
     -moz-osx-font-smoothing: grayscale;
   }
 
-  .notification-title {
-    margin-bottom: 5px;
-    font-size: 18px;
-  }
-
-  .notification-content {
-    font-size: 16px;
-  }
 </style>

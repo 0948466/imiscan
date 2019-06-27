@@ -13,9 +13,9 @@
   align-items: center;
   flex-grow: 1;
   margin: 0 auto;
-  padding: 80px 7% 65px 7%;
+  padding: 9vh 7% 6vh 7%;
   max-width: 540px;
-  max-height: 736px;
+  max-height: 812px;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -46,12 +46,12 @@
     filter: brightness(120%);
   }
   &_white {
-    color: #3aa0b3;
+    color: $color-btn;
     background-color: #ffffff;
   }
   &_blue {
     color: #fefefe;
-    background-color: #3aa0b3;
+    background-color: $color-btn;
   }
   &_bottom {
     margin-top: auto;
@@ -79,6 +79,61 @@ a:hover {
   background-color: #f1f1f1;
   &::placeholder {
     color: #a4a4a4;
+  }
+}
+
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  max-width: 225px;
+  box-sizing: border-box;
+  &:not(:last-of-type) {
+    margin-bottom: 22px;
+  }
+  .checkbox {
+    display: none;
+  }
+  .checkbox + label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding-left: 37px;
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: condensed;
+    line-height: 1.43;
+    letter-spacing: 0.46px;
+    color: $color-text;
+    user-select: none;
+    &::before,
+    &::after {
+      position: absolute;
+      left: 0;
+      top: 5px;
+      content: "";
+    }
+    &::before {
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+      margin: 0 10px 0 0;
+      background-color: $color-btn;
+      border-radius: 2px;
+    }
+    &::after {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 20px;
+      width: 20px;
+      margin: 0 10px 0 0;
+      background: no-repeat 50%;
+      background-size: 15px;
+      color: #fff;
+    }
   }
 }
 

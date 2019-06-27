@@ -1,11 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import HTTP from '../api/http-common';
-import URL from '../api/url';
+import HTTP from '../utils/api';
+import URL from '../utils/url';
 
 import {
   LOADING,
   AUTH_SING_IN,
+  ERROR_CHANGE,
+  WARNING_CHANGE,
+  USER_CHANGE,
+  USER_EXIT,
 } from './mutation-types';
 
 Vue.use(Vuex);
@@ -14,6 +18,7 @@ export default new Vuex.Store({
   state: {
     loading: false,
     error: null,
+    warning: null,
     user: null,
   },
   getters: {
@@ -25,23 +30,26 @@ export default new Vuex.Store({
     [LOADING](state, payload) {
       state.loading = payload;
     },
-    userChange(state, payload) {
+    [USER_CHANGE](state, payload) {
       state.user = payload;
     },
-    errorChange(state, payload) {
+    [USER_EXIT](state) {
+      state.user = null;
+    },
+    [ERROR_CHANGE](state, payload) {
       state.error = payload;
     },
-    userExit(state) {
-      state.user = null;
+    [WARNING_CHANGE](state, payload) {
+      state.warning = payload;
     },
   },
   actions: {
     async [AUTH_SING_IN]({ commit }, params) {
       const result = await HTTP(URL.singIn, 'GET', params);
       if (result && result.error) {
-        commit('errorChange', result.error);
+        commit(ERROR_CHANGE, result.error);
       } else {
-        commit('userChange', result.user);
+        commit(USER_CHANGE, result.user);
       }
       console.log(result);
     },
