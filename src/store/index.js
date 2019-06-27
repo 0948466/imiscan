@@ -8,8 +8,10 @@ import {
   AUTH_SING_IN,
   ERROR_CHANGE,
   WARNING_CHANGE,
+  SUCCESS_CHANGE,
   USER_CHANGE,
   USER_EXIT,
+  USER_RESTORE,
 } from './mutation-types';
 
 Vue.use(Vuex);
@@ -20,6 +22,7 @@ export default new Vuex.Store({
     error: null,
     warning: null,
     user: null,
+    success: null,
   },
   getters: {
     isLoading: state => state.loading,
@@ -42,6 +45,9 @@ export default new Vuex.Store({
     [WARNING_CHANGE](state, payload) {
       state.warning = payload;
     },
+    [SUCCESS_CHANGE](state, payload) {
+      state.warning = payload;
+    },
   },
   actions: {
     async [AUTH_SING_IN]({ commit }, params) {
@@ -51,7 +57,14 @@ export default new Vuex.Store({
       } else {
         commit(USER_CHANGE, result.user);
       }
-      console.log(result);
+    },
+    async [USER_RESTORE]({ commit }, params) {
+      const result = await HTTP(URL.restore, 'GET', params);
+      if (result && result.error) {
+        commit(ERROR_CHANGE, result.error);
+      } else {
+        commit(ERROR_CHANGE, result.error);
+      }
     },
   },
 });

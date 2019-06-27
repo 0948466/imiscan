@@ -12,26 +12,21 @@
           {{ error }}
         </p>
 
-        <p class="decode-result">
-          Last result: <b>{{ result }}</b>
-        </p>
-
         <qrcode-stream
           @decode="onDecode"
           @init="onInit"
         />
 
-
         <input
           v-model="result"
-          class="input"
+          class="input scan-qr-code__input"
           type="text"
           placeholder="Enter QR code"
           required
         >
         <button
           type="submit"
-          class="btn btn_blue"
+          class="btn btn_blue btn_bottom"
         >
           Next
         </button>
@@ -54,6 +49,7 @@ export default {
   methods: {
     onDecode(result) {
       this.result = result;
+      this.$router.push({ name: 'description' });
     },
     async onInit(promise) {
       try {
@@ -84,5 +80,15 @@ export default {
 
 <style lang="scss" scoped>
   .scan-qr-code {
+    &__form {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      align-items: center;
+    }
+    &__input {
+      margin-bottom: 22px;
+      max-width: 252px;
+    }
   }
 </style>

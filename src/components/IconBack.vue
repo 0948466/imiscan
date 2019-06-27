@@ -29,5 +29,6 @@ export default {
     height: 20px;
     background: url("../assets/img/icon/icon-back.png") no-repeat center;
     background-size: 12px 20px;
+    outline: none;
   }
 </style>

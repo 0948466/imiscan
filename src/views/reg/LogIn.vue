@@ -22,12 +22,13 @@
           autocomplete="current-password"
           required
         >
-        <router-link
-          class="link-small"
-          :to="{name: 'restore'}"
+        <a
+          href="#"
+          class="link-small log-in__link-restore"
+          @click.prevent="onRestoreLinkClick"
         >
           Forgot your password?
-        </router-link>
+        </a>
         <button
           type="submit"
           class="btn btn_blue log-in__btn"
@@ -42,6 +43,12 @@
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import IconBack from '@/components/IconBack.vue';
+import {
+  USER_EXIT,
+  USER_RESTORE,
+  AUTH_SING_IN,
+  WARNING_CHANGE
+} from '@/store/mutation-types';
 
 export default {
   name: 'LogInVue',
@@ -54,25 +61,36 @@ export default {
     ...mapGetters(['user']),
   },
   mounted() {
-    this.userExit();
+    this[USER_EXIT]();
   },
   methods: {
-    ...mapMutations(['userExit']),
+    ...mapMutations([USER_EXIT, WARNING_CHANGE]),
     ...mapActions([
       'AUTH_SING_IN',
-
+      'USER_RESTORE',
     ]),
     async onFormSubmit() {
       this.$screenfullInit();
       const params = {
-        email: this.email,
-        password: this.password,
+        email: this.email.trim(),
+        password: this.password.trim(),
       };
 
-      await this.AUTH_SING_IN(params);
+      await this[AUTH_SING_IN](params);
 
       if (this.user) {
         this.$router.push({ name: 'prepare' });
+      }
+    },
+    async onRestoreLinkClick() {
+      // TODO валидация email
+      if (this.email) {
+        const params = {
+          email: this.email.trim(),
+        };
+        await this[USER_RESTORE](params);
+      } else {
+        this.$store.commit(WARNING_CHANGE, 'You must specify your mail');
       }
     },
   },
@@ -99,6 +117,11 @@ export default {
       &:not(:last-of-type) {
         margin-bottom: 23px;
       }
+    }
+
+    &__link-restore {
+      padding-left: 10px;
+      text-align: left;
     }
 
     &__btn {
