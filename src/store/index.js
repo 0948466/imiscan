@@ -60,7 +60,7 @@ export default new Vuex.Store({
       }
     },
     async [AUTH_REGISTER]({ commit }, params) {
-      const result = await HTTP(URL.register, 'GET', params);
+      const result = await HTTP(URL.register, 'POST', params);
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
       } else {

@@ -4,7 +4,7 @@
       <icon-back />
       <form
         action="#"
-        class="log-in__form"
+        class="sing-up__form"
         @submit.prevent="onFormSingUpSubmit"
       >
         <input
@@ -134,6 +134,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import IconBack from '@/components/IconBack.vue';
 import {
   AUTH_REGISTER,
@@ -144,16 +145,19 @@ export default {
   name: 'SingUpVue',
   components: { IconBack },
   data: () => ({
-    email: '',
-    name: '',
-    surname: '',
-    password1: '',
-    password2: '',
-    sex: '',
-    age: '',
-    accept: false,
+    email: 'test@test.test',
+    name: 'test',
+    surname: 'test',
+    password1: '111',
+    password2: '111',
+    sex: '1',
+    age: '1',
+    accept: true,
   }),
   methods: {
+    ...mapActions([
+      'AUTH_REGISTER',
+    ]),
     async onFormSingUpSubmit() {
       if (!this.password1 || (this.password1 !== this.password2)) {
         this.$store.commit(WARNING_CHANGE, 'You need to enter the same passwords');
@@ -175,7 +179,6 @@ export default {
         sex: this.sex,
         age: this.age,
       };
-      console.log(params);
       const result = await this[AUTH_REGISTER](params);
       if (result) {
         this.$screenfullInit();
@@ -189,7 +192,9 @@ export default {
 <style lang="scss" scoped>
   .sing-up {
     &__container {
-      padding-top: 123px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     &__form {
@@ -259,7 +264,9 @@ export default {
       }
     }
     &__checkbox-wrap {
-      label::after {
+      width: 20px;
+      label::after,
+      label::before {
         margin-right: 0;
       }
     }
