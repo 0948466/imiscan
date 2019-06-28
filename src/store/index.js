@@ -72,7 +72,7 @@ export default new Vuex.Store({
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
       } else {
-        commit(ERROR_CHANGE, result.error);
+        commit(SUCCESS_CHANGE, 'Your password has been sent to your e-mail');
       }
     },
   },

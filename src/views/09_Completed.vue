@@ -37,6 +37,7 @@ export default {
     }
     &__text {
       margin-top: 40px;
+      text-align: center;
     }
   }
 
