@@ -24,11 +24,6 @@ export default new Router({
       component: () => import(/* webpackChunkName: "Log-in" */ './views/reg/LogIn.vue'),
     },
     {
-      path: '/restore',
-      name: 'restore',
-      component: () => import(/* webpackChunkName: "Restore" */ './views/reg/Restore.vue'),
-    },
-    {
       path: '/prepare',
       name: 'prepare',
       component: () => import(/* webpackChunkName: "Prepare" */ './views/01_Prepare.vue'),

@@ -1,5 +1,6 @@
 export const LOADING = 'LOADING';
 export const AUTH_SING_IN = 'AUTH_SING_IN';
+export const AUTH_REGISTER = 'AUTH_REGISTER';
 export const USER_CHANGE = 'USER_CHANGE';
 export const USER_EXIT = 'USER_EXIT';
 export const USER_RESTORE = 'USER_RESTORE';

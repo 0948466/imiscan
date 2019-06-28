@@ -37,3 +37,9 @@ export default {
   }
 
 </style>
+
+<style>
+  .checkbox:checked+label::after {
+    background-image: url("~@/assets/img/icon/icon-select.png");
+  }
+</style>

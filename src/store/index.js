@@ -6,6 +6,7 @@ import URL from '../utils/url';
 import {
   LOADING,
   AUTH_SING_IN,
+  AUTH_REGISTER,
   ERROR_CHANGE,
   WARNING_CHANGE,
   SUCCESS_CHANGE,
@@ -52,6 +53,14 @@ export default new Vuex.Store({
   actions: {
     async [AUTH_SING_IN]({ commit }, params) {
       const result = await HTTP(URL.singIn, 'GET', params);
+      if (result && result.error) {
+        commit(ERROR_CHANGE, result.error);
+      } else {
+        commit(USER_CHANGE, result.user);
+      }
+    },
+    async [AUTH_REGISTER]({ commit }, params) {
+      const result = await HTTP(URL.register, 'GET', params);
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
       } else {

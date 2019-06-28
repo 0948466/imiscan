@@ -89,7 +89,7 @@ export default {
         };
         await this[USER_RESTORE](params);
       } else {
-        this.$store.commit(WARNING_CHANGE, 'You must specify your mail');
+
       }
     },
   },

@@ -105,15 +105,15 @@ export default {
     }
     &__checkbox-wrap {
       margin-left: 25px;
+      label::after,
+      label::before {
+        top: 5px;
+        transform: none;
+      }
     }
 
     &__btn {
     }
   }
 
-</style>
-<style>
-  .checkbox:checked+label::after {
-    background-image: url("../assets/img/icon/icon-select.png");
-  }
 </style>
