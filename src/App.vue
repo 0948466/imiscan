@@ -18,6 +18,10 @@ export default {
       vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
+
+    window.onpopstate = function(event) {
+      alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+    };
   },
 };
 </script>

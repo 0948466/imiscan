@@ -26,5 +26,11 @@
         }
       }
     }
+  },
+  "register": {
+    "l": 0,
+    "r": 0,
+    "accuracyLeft": 0,
+    "accuracyRight": 0
   }
 }

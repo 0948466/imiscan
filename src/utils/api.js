@@ -16,6 +16,7 @@ export default (urlFrom, method = 'POST', params = {}) => {
 
   return fetch(url, {
     method,
+    credentials: 'include',
     mode: 'cors',
     body,
   })

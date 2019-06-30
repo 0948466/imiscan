@@ -4,6 +4,7 @@ export const AUTH_REGISTER = 'AUTH_REGISTER';
 export const USER_CHANGE = 'USER_CHANGE';
 export const USER_EXIT = 'USER_EXIT';
 export const USER_RESTORE = 'USER_RESTORE';
+export const USER_GET = 'USER_GET';
 export const ERROR_CHANGE = 'ERROR_CHANGE';
 export const WARNING_CHANGE = 'WARNING_CHANGE';
 export const SUCCESS_CHANGE = 'SUCCESS_CHANGE';

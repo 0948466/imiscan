@@ -13,6 +13,7 @@ import {
   USER_CHANGE,
   USER_EXIT,
   USER_RESTORE,
+  USER_GET,
 } from './mutation-types';
 
 Vue.use(Vuex);
@@ -59,16 +60,26 @@ export default new Vuex.Store({
         commit(USER_CHANGE, result.user);
       }
     },
-    async [AUTH_REGISTER]({ commit }, params) {
-      const result = await HTTP(URL.register, 'POST', params);
+    async [AUTH_REGISTER]({ dispatch, commit }, params) {
+      const result = await HTTP(URL.register, 'GET', params);
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
       } else {
+        await HTTP(URL.register, 'GET');
+        await dispatch([USER_GET]);
         commit(USER_CHANGE, result.user);
       }
     },
     async [USER_RESTORE]({ commit }, params) {
       const result = await HTTP(URL.restore, 'GET', params);
+      if (result && result.error) {
+        commit(ERROR_CHANGE, result.error);
+      } else {
+        commit(SUCCESS_CHANGE, 'Your password has been sent to your e-mail');
+      }
+    },
+    async [USER_GET]({ commit }) {
+      const result = await HTTP(URL.getUser, 'GET');
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
       } else {
