@@ -1,16 +1,21 @@
 <template>
   <div id="app">
     <router-view />
-    <notify />
+    <Notify />
+    <Quit />
   </div>
 </template>
 
 <script>
+import {
+  SHOW_QUIT_CHANGE,
+} from '@/store/mutation-types';
 import Notify from '@/components/Notify.vue';
+import Quit from '@/components/Quit.vue';
 
 export default {
   name: 'App',
-  components: { Notify },
+  components: { Quit, Notify },
   beforeCreate() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -19,8 +24,12 @@ export default {
       document.documentElement.style.setProperty('--vh', `${vh}px`);
     });
 
-    window.onpopstate = function(event) {
-      alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+    window.onpopstate = (event) => {
+      if (this.$store.getters.qrCode) {
+        this.$router.go(1);
+        event.preventDefault();
+        this.$store.commit(SHOW_QUIT_CHANGE, true);
+      }
     };
   },
 };
@@ -30,6 +39,7 @@ export default {
   @import "./scss/init";
 
   #app {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100vh;

@@ -8,3 +8,5 @@ export const USER_GET = 'USER_GET';
 export const ERROR_CHANGE = 'ERROR_CHANGE';
 export const WARNING_CHANGE = 'WARNING_CHANGE';
 export const SUCCESS_CHANGE = 'SUCCESS_CHANGE';
+export const SHOW_QUIT_CHANGE = 'SHOW_QUIT_CHANGE';
+export const QR_CODE_CHANGE = 'QR_CODE_CHANGE';

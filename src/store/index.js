@@ -14,6 +14,8 @@ import {
   USER_EXIT,
   USER_RESTORE,
   USER_GET,
+  SHOW_QUIT_CHANGE,
+  QR_CODE_CHANGE,
 } from './mutation-types';
 
 Vue.use(Vuex);
@@ -25,11 +27,15 @@ export default new Vuex.Store({
     warning: null,
     user: null,
     success: null,
+    showQuit: false,
+    qrCode: null,
   },
   getters: {
     isLoading: state => state.loading,
     user: state => state.user,
     error: state => state.error,
+    showQuit: state => state.showQuit,
+    qrCode: state => state.qrCode,
   },
   mutations: {
     [LOADING](state, payload) {
@@ -50,6 +56,12 @@ export default new Vuex.Store({
     [SUCCESS_CHANGE](state, payload) {
       state.warning = payload;
     },
+    [SHOW_QUIT_CHANGE](state, payload) {
+      state.showQuit = payload;
+    },
+    [QR_CODE_CHANGE](state, payload) {
+      state.showQuit = payload;
+    },
   },
   actions: {
     async [AUTH_SING_IN]({ commit }, params) {
@@ -65,9 +77,13 @@ export default new Vuex.Store({
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
       } else {
+        console.log(123)
         await HTTP(URL.register, 'GET');
-        await dispatch([USER_GET]);
-        commit(USER_CHANGE, result.user);
+        console.log(444)
+        console.log(USER_GET)
+        const user = await dispatch([USER_GET]);
+        // console.log(user);
+        // commit(USER_CHANGE, user);
       }
     },
     async [USER_RESTORE]({ commit }, params) {

@@ -2,11 +2,17 @@
   <section class="log-in wrapper">
     <div class="log-in__container container">
       <icon-back />
+
       <form
         action="#"
         class="log-in__form"
         @submit.prevent="onFormSubmit"
       >
+        <h1 class="log-in__title title">
+          If you already have an account with &nbsp; &nbsp; The &nbsp; &nbsp; Online &nbsp; &nbsp; &nbsp; Store,
+          <br>
+          please log in
+        </h1>
         <input
           v-model="email"
           class="input"
@@ -35,7 +41,20 @@
         >
           Log in
         </button>
+
       </form>
+
+      <div class="log-in__for-sing-up">
+        <p class="text log-in__text">
+          If you are a new customer please sign up
+        </p>
+        <router-link
+          :to="{ name: 'sing-up' }"
+          class="btn btn_white log-in__link-sing-up"
+        >
+          Sing up
+        </router-link>
+      </div>
     </div>
   </section>
 </template>
@@ -47,7 +66,8 @@ import {
   USER_EXIT,
   USER_RESTORE,
   AUTH_SING_IN,
-  WARNING_CHANGE
+  WARNING_CHANGE,
+  QR_CODE_CHANGE,
 } from '@/store/mutation-types';
 
 export default {
@@ -59,12 +79,14 @@ export default {
   }),
   computed: {
     ...mapGetters(['user']),
+    ...mapMutations([QR_CODE_CHANGE]),
   },
   mounted() {
     this[USER_EXIT]();
+    this[QR_CODE_CHANGE](null);
   },
   methods: {
-    ...mapMutations([USER_EXIT, WARNING_CHANGE]),
+    ...mapMutations([USER_EXIT, WARNING_CHANGE, QR_CODE_CHANGE]),
     ...mapActions([
       'AUTH_SING_IN',
       'USER_RESTORE',
@@ -110,6 +132,13 @@ export default {
       width: 100%;
     }
 
+    &__title {
+      margin-bottom: 30px;
+      text-align: justify;
+      letter-spacing: .02em;
+
+    }
+
     .input {
       margin-bottom: 17px;
 
@@ -125,6 +154,17 @@ export default {
 
     &__btn {
       margin-top: 50px;
+    }
+    &__for-sing-up {
+      margin-top: auto;
+    }
+    &__text {
+      margin-bottom: 28px;
+      letter-spacing: 0.32px;
+      color: #515151;
+    }
+    &__link-sing-up {
+      border: solid 1px #959595;
     }
   }
 

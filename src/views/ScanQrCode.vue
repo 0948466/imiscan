@@ -47,6 +47,9 @@
 <script>
 import { QrcodeStream } from 'vue-qrcode-reader';
 import IconBack from '@/components/IconBack.vue';
+import {
+  QR_CODE_CHANGE,
+} from '@/store/mutation-types';
 
 export default {
   name: 'ScanQrCode',
@@ -59,6 +62,7 @@ export default {
   methods: {
     onDecode(result) {
       this.result = result;
+      this.$store.commit(QR_CODE_CHANGE, result);
       this.$router.push({ name: 'description' });
     },
     async onInit(promise) {

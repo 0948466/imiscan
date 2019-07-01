@@ -37,7 +37,7 @@ export default {
   methods: {
     onGetConnectBtnClick() {
       this.$screenfullInit();
-      this.$router.push({ name: 'start' });
+      this.$router.push({ name: 'log-in' });
     },
   },
 };
