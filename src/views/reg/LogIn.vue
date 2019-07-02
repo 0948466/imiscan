@@ -68,6 +68,7 @@ import {
   AUTH_SING_IN,
   WARNING_CHANGE,
   QR_CODE_CHANGE,
+  SCAN_COUNT_CHANGE,
 } from '@/store/mutation-types';
 
 export default {
@@ -83,9 +84,10 @@ export default {
   mounted() {
     this[USER_EXIT]();
     this[QR_CODE_CHANGE](null);
+    this[SCAN_COUNT_CHANGE](0);
   },
   methods: {
-    ...mapMutations([USER_EXIT, WARNING_CHANGE, QR_CODE_CHANGE]),
+    ...mapMutations([USER_EXIT, WARNING_CHANGE, QR_CODE_CHANGE, SCAN_COUNT_CHANGE]),
     ...mapActions([
       'AUTH_SING_IN',
       'USER_RESTORE',

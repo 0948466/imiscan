@@ -16,6 +16,8 @@ import {
   USER_GET,
   SHOW_QUIT_CHANGE,
   QR_CODE_CHANGE,
+  SCAN,
+  SCAN_COUNT_CHANGE,
 } from './mutation-types';
 
 Vue.use(Vuex);
@@ -29,6 +31,8 @@ export default new Vuex.Store({
     success: null,
     showQuit: false,
     qrCode: null,
+    scanCount: 0,
+    random: null,
   },
   getters: {
     isLoading: state => state.loading,
@@ -36,6 +40,10 @@ export default new Vuex.Store({
     error: state => state.error,
     showQuit: state => state.showQuit,
     qrCode: state => state.qrCode,
+    qrCodeId: state => ((state.qrCode) ? state.qrCode.split(';')[0] : null),
+    qrCodeToken: state => ((state.qrCode) ? state.qrCode.split(';')[1] : null),
+    scanCount: state => state.scanCount,
+    random: state => state.random,
   },
   mutations: {
     [LOADING](state, payload) {
@@ -60,7 +68,15 @@ export default new Vuex.Store({
       state.showQuit = payload;
     },
     [QR_CODE_CHANGE](state, payload) {
+      state.random = Math.floor(Math.random() * 5) + 1;
       state.qrCode = payload;
+    },
+    [SCAN_COUNT_CHANGE](state, payload) {
+      if (payload) {
+        state.scanCount += payload;
+      } else {
+        state.scanCount = 0;
+      }
     },
   },
   actions: {
@@ -101,6 +117,19 @@ export default new Vuex.Store({
       }
       commit(USER_CHANGE, result.user);
       return false;
+    },
+    async [SCAN]({ commit }) {
+      commit(SCAN_COUNT_CHANGE, 1);
+      // const params = {
+      //   t: this.getters.qrCodeToken,
+      // };
+      // const result = await HTTP(`${URL.activate}${this.getters.qrCodeId}`, 'POST', params);
+      // if (result && result.error) {
+      //   commit(ERROR_CHANGE, result.error);
+      //   return false;
+      // }
+      // commit(USER_CHANGE, result.user);
+      // return false;
     },
   },
 });
