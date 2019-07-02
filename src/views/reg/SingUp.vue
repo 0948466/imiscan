@@ -134,7 +134,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import IconBack from '@/components/IconBack.vue';
 import {
   AUTH_REGISTER,
@@ -154,6 +154,9 @@ export default {
     age: '1',
     accept: true,
   }),
+  computed: {
+    ...mapGetters(['user']),
+  },
   methods: {
     ...mapActions([
       'AUTH_REGISTER',
@@ -179,8 +182,8 @@ export default {
         sex: this.sex,
         age: this.age,
       };
-      const result = await this[AUTH_REGISTER](params);
-      if (result) {
+      await this[AUTH_REGISTER](params);
+      if (this.user) {
         this.$screenfullInit();
         this.$router.push({ name: 'prepare' });
       }

@@ -62,7 +62,7 @@ export default {
   methods: {
     onDecode(result) {
       this.result = result;
-      this.$store.commit(QR_CODE_CHANGE, result);
+      this.$store.commit(QR_CODE_CHANGE, this.result);
       this.$router.push({ name: 'description' });
     },
     async onInit(promise) {
@@ -88,6 +88,7 @@ export default {
       }
     },
     onFormQrCodeSubmit() {
+      this.$store.commit(QR_CODE_CHANGE, this.result);
       this.$router.push({ name: 'description' });
     },
 

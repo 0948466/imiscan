@@ -60,7 +60,7 @@ export default new Vuex.Store({
       state.showQuit = payload;
     },
     [QR_CODE_CHANGE](state, payload) {
-      state.showQuit = payload;
+      state.qrCode = payload;
     },
   },
   actions: {
@@ -77,30 +77,30 @@ export default new Vuex.Store({
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
       } else {
-        console.log(123)
         await HTTP(URL.register, 'GET');
-        console.log(444)
-        console.log(USER_GET)
-        const user = await dispatch([USER_GET]);
-        // console.log(user);
-        // commit(USER_CHANGE, user);
+        const user = await dispatch(USER_GET);
+        if (user) {
+          commit(USER_CHANGE, user);
+        }
       }
     },
     async [USER_RESTORE]({ commit }, params) {
       const result = await HTTP(URL.restore, 'GET', params);
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
-      } else {
-        commit(SUCCESS_CHANGE, 'Your password has been sent to your e-mail');
+        return false;
       }
+      commit(SUCCESS_CHANGE, 'Your password has been sent to your e-mail');
+      return true;
     },
     async [USER_GET]({ commit }) {
       const result = await HTTP(URL.getUser, 'GET');
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
-      } else {
-        commit(SUCCESS_CHANGE, 'Your password has been sent to your e-mail');
+        return false;
       }
+      commit(USER_CHANGE, result.user);
+      return false;
     },
   },
 });

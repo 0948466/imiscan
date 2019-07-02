@@ -37,7 +37,7 @@ export default {
     },
     user(newValue) {
       if (newValue) {
-        this.showNotify('success', 'Success', 'login successful');
+        this.showNotify('success', 'Success', 'Login successful');
       }
     },
   },

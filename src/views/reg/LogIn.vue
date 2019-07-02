@@ -79,7 +79,6 @@ export default {
   }),
   computed: {
     ...mapGetters(['user']),
-    ...mapMutations([QR_CODE_CHANGE]),
   },
   mounted() {
     this[USER_EXIT]();
@@ -159,7 +158,7 @@ export default {
       margin-top: auto;
     }
     &__text {
-      margin-bottom: 28px;
+      margin-bottom: 25px;
       letter-spacing: 0.32px;
       color: #515151;
     }

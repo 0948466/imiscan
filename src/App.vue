@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import {
   SHOW_QUIT_CHANGE,
 } from '@/store/mutation-types';
@@ -16,6 +17,11 @@ import Quit from '@/components/Quit.vue';
 export default {
   name: 'App',
   components: { Quit, Notify },
+  computed: {
+    ...mapGetters([
+      'qrCode',
+    ]),
+  },
   beforeCreate() {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);

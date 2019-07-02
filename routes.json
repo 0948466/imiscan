@@ -1,4 +1,5 @@
 {
   "/imigize/user/login/1": "/login",
-  "/showroom/api/register": "/register"
+  "/showroom/api/register": "/register",
+  "/imigize/user": "/getUser"
 }
