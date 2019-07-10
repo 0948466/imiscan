@@ -12,3 +12,6 @@ export const SHOW_QUIT_CHANGE = 'SHOW_QUIT_CHANGE';
 export const QR_CODE_CHANGE = 'QR_CODE_CHANGE';
 export const SCAN = 'SCAN';
 export const SCAN_COUNT_CHANGE = 'SCAN_COUNT_CHANGE';
+export const SCAN_FINISH = 'SCAN_FINISH';
+export const SCAN_ACTIVATE = 'SCAN_ACTIVATE';
+export const QR_CODE_DELETE = 'QR_CODE_DELETE';

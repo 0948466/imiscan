@@ -108,49 +108,15 @@ export default {
     &__qrcode-stream {
       margin-top: auto;
       margin-bottom: auto;
+      width: 100%;
+      height: 350px;
+      max-height: 50vh;
+      overflow: hidden;
     }
     &__input {
-      margin-top: auto;
+      margin-top: 20px;
       margin-bottom: 22px;
       max-width: 252px;
     }
-  }
-  .qrcode-stream__camera,
-  .qrcode-stream__pause-frame {
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    box-sizing: border-box;
-    background-size: cover;
-    max-width: inherit !important;
-    max-height: inherit !important;
-  }
-
-  .qrcode-stream__inner-wrapper {
-    position: inherit !important;
-    max-width: inherit !important;
-    max-height: inherit !important;
-    z-index: inherit !important;
-  }
-</style>
-<style>
-  .qrcode-stream__camera,
-  .qrcode-stream__pause-frame {
-    min-width: 100%;
-    min-height: 100%;
-    box-sizing: border-box;
-    width: auto;
-    height: auto;
-    background-size: cover;
-    max-width: inherit !important;
-    max-height: inherit !important;
-  }
-
-  .qrcode-stream__inner-wrapper {
-    position: inherit !important;
-    max-width: inherit !important;
-    max-height: inherit !important;
-    z-index: inherit !important;
   }
 </style>

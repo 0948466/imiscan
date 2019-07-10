@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <router-view />
-    <Notify />
-    <Quit />
+    <div class="app__inner">
+      <router-view />
+      <Notify />
+      <Quit />
+    </div>
   </div>
 </template>
 
@@ -43,23 +45,76 @@ export default {
 
 <style lang="scss">
   @import "./scss/init";
+  @import "~nprogress/nprogress.css";
 
   #app {
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    justify-content: center;
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     background-color: $bg-pages;
     font-family: 'Roboto Condensed', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  .app__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 95vh;
+    min-height: calc(var(--vh, 1vh) * 95);
+  }
+
 </style>
 
 <style>
-  .checkbox:checked+label::after {
+  .checkbox:checked + label::after {
     background-image: url("~@/assets/img/icon/icon-select.png");
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2A65B0;
+    border: 0px none #2A65B0;
+    border-radius: 50px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4c88e8;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: #4a7ccc;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #132A54;
+    border: 0px none #132A54;
+    border-radius: 0px;
+  }
+
+  ::-webkit-scrollbar-track:hover {
+    background: #132A54;
+  }
+
+  ::-webkit-scrollbar-track:active {
+    background: #060F1D;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
   }
 </style>

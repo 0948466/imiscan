@@ -2,10 +2,12 @@
   <section class="scan wrapper">
     <div class="scan__container container ">
       <icon-back />
-      <img
-        :src="getImgSrc"
-        alt="Feet"
-      >
+      <div class="img-container">
+        <img
+          :src="getImgSrc"
+          alt="Feet"
+        >
+      </div>
       <p class="scan__text text text_up">
         Don't move
       </p>
@@ -37,6 +39,7 @@ import feet52 from '../assets/img/feet/feet-5-2.png';
 import IconBack from '@/components/IconBack.vue';
 import {
   SCAN,
+  SCAN_FINISH,
 } from '@/store/mutation-types';
 
 export default {
@@ -79,13 +82,17 @@ export default {
     },
   },
   methods: {
-    ...mapActions([SCAN]),
+    ...mapActions([SCAN, SCAN_FINISH]),
     async onBtnScanClick() {
-      await this[SCAN]();
+      const scanSuccess = await this[SCAN]();
+      if (!scanSuccess) {
+        return;
+      }
       if (this.scanCount < 3) {
         this.$router.push('description');
       } else {
         this.$router.push('completed');
+        await this[SCAN_FINISH]();
       }
     },
   },
@@ -99,6 +106,7 @@ export default {
     }
     &__text {
       margin-top: 40px;
+      margin-bottom: 20px;
     }
   }
 </style>

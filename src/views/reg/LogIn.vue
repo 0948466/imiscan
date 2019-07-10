@@ -9,7 +9,8 @@
         @submit.prevent="onFormSubmit"
       >
         <h1 class="log-in__title title">
-          If you already have an account with &nbsp; &nbsp; The &nbsp; &nbsp; Online &nbsp; &nbsp; &nbsp; Store,
+          If you already have an account with &nbsp; &nbsp; The &nbsp; &nbsp; Online
+          &nbsp; &nbsp; &nbsp; Store,
           <br>
           please log in
         </h1>
@@ -41,7 +42,6 @@
         >
           Log in
         </button>
-
       </form>
 
       <div class="log-in__for-sing-up">
@@ -81,16 +81,37 @@ export default {
   computed: {
     ...mapGetters(['user']),
   },
+  created() {
+    if (localStorage.getItem('user')) {
+      this.$store.dispatch(USER_EXIT);
+    }
+  },
   mounted() {
-    this[USER_EXIT]();
     this[QR_CODE_CHANGE](null);
     this[SCAN_COUNT_CHANGE](0);
+    const inputs = document.querySelectorAll('input');
+    const appInner = document.querySelector('.app__inner');
+    setTimeout(() => {
+      inputs.forEach((input) => {
+        input.addEventListener('focus', () => {
+          setTimeout(() => {
+            const inputTop = input.getBoundingClientRect().top;
+            const appInnerTop = appInner.getBoundingClientRect().top;
+            appInner.style.transform = `translateY(-${inputTop - appInnerTop - 100}px)`;
+          }, 0);
+        });
+        input.addEventListener('blur', () => {
+          appInner.style.transform = 'translateY(0)';
+        });
+      });
+    }, 500);
   },
   methods: {
     ...mapMutations([USER_EXIT, WARNING_CHANGE, QR_CODE_CHANGE, SCAN_COUNT_CHANGE]),
     ...mapActions([
-      'AUTH_SING_IN',
-      'USER_RESTORE',
+      AUTH_SING_IN,
+      USER_RESTORE,
+      USER_EXIT,
     ]),
     async onFormSubmit() {
       this.$screenfullInit();
@@ -112,7 +133,7 @@ export default {
         };
         await this[USER_RESTORE](params);
       } else {
-
+        this.$store.commit(WARNING_CHANGE, 'You need to enter email');
       }
     },
   },
@@ -123,12 +144,13 @@ export default {
   .log-in {
 
     &__container {
-      padding-top: 123px;
+      padding-top: 15vh;
     }
 
     &__form {
       display: flex;
       flex-direction: column;
+      margin-bottom: 40px;
       max-width: 252px;
       width: 100%;
     }

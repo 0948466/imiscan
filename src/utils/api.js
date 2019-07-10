@@ -1,4 +1,4 @@
-export default (urlFrom, method = 'POST', params = {}) => {
+export default (urlFrom, method = 'POST', params = {}, credentials = 'include') => {
   const baseUrl = (process.env.NODE_ENV !== 'development') ? 'https://imigize.ru' : 'http://localhost:3004';
   let body = null;
   let url = `${baseUrl}${urlFrom}`;
@@ -16,11 +16,16 @@ export default (urlFrom, method = 'POST', params = {}) => {
 
   return fetch(url, {
     method,
-    credentials: 'include',
+    credentials,
     mode: 'cors',
     body,
   })
-    .then(response => response.json())
+    .then((response) => {
+      if (response.status !== 200) {
+        return { e: 30002 };
+      }
+      return response.json();
+    })
     .then(data => data)
     .catch((error) => {
       console.error(error);

@@ -45,7 +45,7 @@ export default {
   methods: {
     onBtnYesClick() {
       this.$store.commit(SHOW_QUIT_CHANGE, false);
-      this.$router.push({ name: 'log-in' });
+      this.$router.push({ name: 'find-qr-code' });
     },
     onBtnCancelClick() {
       this.$store.commit(SHOW_QUIT_CHANGE, false);

@@ -2,25 +2,31 @@
   <section class="description wrapper">
     <div class="description__container container ">
       <icon-back />
-      <img
-        :src="getImgSrc"
-        alt="Feet"
-      >
+      <div class="img-container">
+        <img
+          :src="getImgSrc"
+          alt="Feet"
+        >
+      </div>
       <p class="description__text text text_up">
         {{ descText }}
       </p>
-      <router-link
+      <button
         class="btn btn_blue btn_bottom"
-        :to="{name: 'scan'}"
+        @click.prevent="onBtnActivateClick"
       >
         Next
-      </router-link>
+      </button>
     </div>
   </section>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+import {
+  SCAN_ACTIVATE,
+} from '@/store/mutation-types';
+
 import IconBack from '@/components/IconBack.vue';
 
 import feetDesc from '../assets/img/feet/03-desc.png';
@@ -84,6 +90,16 @@ export default {
       }
     },
   },
+  methods: {
+    ...mapActions([SCAN_ACTIVATE]),
+    async onBtnActivateClick() {
+      const scanSuccess = await this[SCAN_ACTIVATE]();
+      if (!scanSuccess) {
+        return;
+      }
+      this.$router.push({ name: 'scan' });
+    },
+  },
 };
 </script>
 
@@ -95,6 +111,7 @@ export default {
     &__text {
       text-align: center;
       margin-top: 40px;
+      margin-bottom: 20px;
     }
   }
 

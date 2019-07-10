@@ -2,10 +2,12 @@
   <section class="completed wrapper">
     <div class="completed__container container ">
       <icon-back />
-      <img
-        src="../assets/img/feet/09-completed.png"
-        alt="Feet"
-      >
+      <div class="img-container">
+        <img
+          src="../assets/img/feet/09-completed.png"
+          alt="Feet"
+        >
+      </div>
       <p class="completed__text text text_up">
         Congratulations
         <br>
@@ -37,6 +39,7 @@ export default {
     }
     &__text {
       margin-top: 40px;
+      margin-bottom: 20px;
       text-align: center;
     }
   }

@@ -83,7 +83,7 @@ export default {
 <style lang="scss" scoped>
   .prepare {
     &__title {
-      margin-bottom: 4vh;
+      margin-bottom: 3.5vh;
       font-size: 24px;
       font-weight: bold;
       font-style: normal;

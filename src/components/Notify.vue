@@ -2,6 +2,7 @@
   <notifications
     group="foo"
     width="100%"
+    position="top center"
   />
 </template>
 
@@ -19,25 +20,25 @@ export default {
   watch: {
     error(newValue) {
       if (newValue) {
-        this.showNotify('error', 'Error', this.error);
+        this.showNotify('error', '', this.error);
         this[ERROR_CHANGE](false);
       }
     },
     warning(newValue) {
       if (newValue) {
-        this.showNotify('warn', 'Warning', this.warning);
+        this.showNotify('warn', '', this.warning);
         this[WARNING_CHANGE](false);
       }
     },
     success(newValue) {
       if (newValue) {
-        this.showNotify('success', 'Success', this.success);
+        this.showNotify('success', '', this.success);
         this[SUCCESS_CHANGE](false);
       }
     },
     user(newValue) {
       if (newValue) {
-        this.showNotify('success', 'Success', 'Login successful');
+        this.showNotify('success', '', 'Login successful');
       }
     },
   },
@@ -47,7 +48,7 @@ export default {
       this.$notify({
         group: 'foo',
         type,
-        duration: 2000,
+        duration: 1500,
         title,
         text,
       });
@@ -59,6 +60,8 @@ export default {
 <style lang="scss">
   .notifications {
     max-width: 500px;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
   }
 
   .notification-title {
@@ -69,5 +72,4 @@ export default {
   .notification-content {
     font-size: 16px;
   }
-
 </style>

@@ -139,17 +139,18 @@ import IconBack from '@/components/IconBack.vue';
 import {
   AUTH_REGISTER,
   WARNING_CHANGE,
+  USER_GET,
 } from '@/store/mutation-types';
 
 export default {
   name: 'SingUpVue',
   components: { IconBack },
   data: () => ({
-    email: 'test@test.test',
-    name: 'test',
-    surname: 'test',
-    password1: '111',
-    password2: '111',
+    email: 'test@test2.test',
+    name: 'test2',
+    surname: 'test2',
+    password1: '123',
+    password2: '123',
     sex: '1',
     age: '1',
     accept: true,
@@ -157,9 +158,28 @@ export default {
   computed: {
     ...mapGetters(['user']),
   },
+  mounted() {
+    const inputs = document.querySelectorAll('input');
+    const appInner = document.querySelector('.app__inner');
+    setTimeout(() => {
+      inputs.forEach((input) => {
+        input.addEventListener('focus', () => {
+          setTimeout(() => {
+            const inputTop = input.getBoundingClientRect().top;
+            const appInnerTop = appInner.getBoundingClientRect().top;
+            appInner.style.transform = `translateY(-${inputTop - appInnerTop - 100}px)`;
+          }, 0);
+        });
+        input.addEventListener('blur', () => {
+          appInner.style.transform = 'translateY(0)';
+        });
+      });
+    }, 500);
+  },
   methods: {
     ...mapActions([
-      'AUTH_REGISTER',
+      AUTH_REGISTER,
+      USER_GET,
     ]),
     async onFormSingUpSubmit() {
       if (!this.password1 || (this.password1 !== this.password2)) {
@@ -182,7 +202,13 @@ export default {
         sex: this.sex,
         age: this.age,
       };
-      await this[AUTH_REGISTER](params);
+
+      const resultRegister = await this[AUTH_REGISTER](params);
+      if (!resultRegister) {
+        return;
+      }
+      await this[USER_GET]();
+
       if (this.user) {
         this.$screenfullInit();
         this.$router.push({ name: 'prepare' });

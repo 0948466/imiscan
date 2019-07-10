@@ -35,6 +35,7 @@ export default {
     }
     &__text {
       margin-top: 40px;
+      margin-bottom: 20px;
     }
   }
 
