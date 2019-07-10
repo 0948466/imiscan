@@ -14,6 +14,7 @@
 
         <div class="scan-qr-code__qrcode-stream">
           <qrcode-stream
+            v-if="showQrCode"
             @decode="onDecode"
             @init="onInit"
           >
@@ -59,6 +60,11 @@ export default {
     error: '',
     loading: false,
   }),
+  computed: {
+    showQrCode() {
+      return this.$store.state.showQrCode;
+    },
+  },
   methods: {
     onDecode(result) {
       this.result = result;

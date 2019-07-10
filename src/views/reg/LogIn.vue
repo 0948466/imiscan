@@ -100,11 +100,15 @@ export default {
             appInner.style.transform = `translateY(-${inputTop - appInnerTop - 100}px)`;
           }, 0);
         });
-        input.addEventListener('blur', () => {
-          appInner.style.transform = 'translateY(0)';
-        });
+        // input.addEventListener('blur', () => {
+        //   appInner.style.transform = 'translateY(0)';
+        // });
       });
     }, 500);
+  },
+  beforeDestroy() {
+    const appInner = document.querySelector('.app__inner');
+    appInner.style.transform = 'translateY(0)';
   },
   methods: {
     ...mapMutations([USER_EXIT, WARNING_CHANGE, QR_CODE_CHANGE, SCAN_COUNT_CHANGE]),

@@ -49,6 +49,7 @@ export default new Vuex.Store({
     qrCode,
     scanCount: 0,
     random: null,
+    showQrCode: true,
   },
   getters: {
     isLoading: state => state.loading,

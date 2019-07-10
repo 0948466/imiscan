@@ -30,9 +30,10 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import {
   SHOW_QUIT_CHANGE,
+  SCAN_FINISH,
 } from '@/store/mutation-types';
 
 export default {
@@ -43,9 +44,11 @@ export default {
     ]),
   },
   methods: {
+    ...mapActions([SCAN_FINISH]),
     onBtnYesClick() {
       this.$store.commit(SHOW_QUIT_CHANGE, false);
       this.$router.push({ name: 'find-qr-code' });
+      this[SCAN_FINISH]();
     },
     onBtnCancelClick() {
       this.$store.commit(SHOW_QUIT_CHANGE, false);

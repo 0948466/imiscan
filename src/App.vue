@@ -4,6 +4,7 @@
       <router-view />
       <Notify />
       <Quit />
+      <Loading v-if="isLoading" />
     </div>
   </div>
 </template>
@@ -12,16 +13,19 @@
 import { mapGetters } from 'vuex';
 import {
   SHOW_QUIT_CHANGE,
+  QR_CODE_DELETE,
 } from '@/store/mutation-types';
 import Notify from '@/components/Notify.vue';
 import Quit from '@/components/Quit.vue';
+import Loading from '@/components/Loading.vue';
 
 export default {
   name: 'App',
-  components: { Quit, Notify },
+  components: { Loading, Quit, Notify },
   computed: {
     ...mapGetters([
       'qrCode',
+      'isLoading',
     ]),
   },
   beforeCreate() {
@@ -37,6 +41,7 @@ export default {
         this.$router.go(1);
         event.preventDefault();
         this.$store.commit(SHOW_QUIT_CHANGE, true);
+        this.$store.commit(QR_CODE_DELETE);
       }
     };
   },

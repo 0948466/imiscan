@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 
 import feetStart from '../assets/img/feet/04-start.png';
 import feet11 from '../assets/img/feet/feet-1-1.png';
@@ -40,6 +40,7 @@ import IconBack from '@/components/IconBack.vue';
 import {
   SCAN,
   SCAN_FINISH,
+  LOADING,
 } from '@/store/mutation-types';
 
 export default {
@@ -83,11 +84,15 @@ export default {
   },
   methods: {
     ...mapActions([SCAN, SCAN_FINISH]),
+    ...mapMutations([LOADING]),
     async onBtnScanClick() {
       const scanSuccess = await this[SCAN]();
       if (!scanSuccess) {
         return;
       }
+
+      this[LOADING](true);
+
       if (this.scanCount < 3) {
         this.$router.push('description');
       } else {

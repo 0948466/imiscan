@@ -7,12 +7,36 @@
 </template>
 
 <script>
+import {
+  SHOW_QUIT_CHANGE,
+  QR_CODE_DELETE,
+} from '@/store/mutation-types';
+
 export default {
   name: 'IconBack',
   methods: {
     onIconBackClick(e) {
       e.preventDefault();
-      this.$router.go(-1);
+      switch (this.$router.currentRoute.name) {
+        case 'log-in':
+          this.$router.push({ name: 'get-connected' });
+          return;
+        case 'sing-up':
+          this.$router.push({ name: 'log-in' });
+          return;
+        case 'prepare':
+          this.$router.push({ name: 'log-in' });
+          return;
+        case 'find-qr-code':
+          this.$router.push({ name: 'prepare' });
+          return;
+        case 'scan-qr-code':
+          this.$router.push({ name: 'find-qr-code' });
+          return;
+        default:
+          this.$store.commit(SHOW_QUIT_CHANGE, true);
+          this.$store.commit(QR_CODE_DELETE);
+      }
     },
   },
 };
