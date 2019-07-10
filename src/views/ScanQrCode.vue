@@ -89,9 +89,12 @@ export default {
     },
     onFormQrCodeSubmit() {
       this.$store.commit(QR_CODE_CHANGE, this.result);
-      this.$router.push({ name: 'description' });
+      if (!this.$store.getters.qrCodeToken) {
+        this.$router.push({ name: 'error-qr-code' });
+      } else {
+        this.$router.push({ name: 'description' });
+      }
     },
-
   },
 };
 </script>

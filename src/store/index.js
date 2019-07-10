@@ -150,7 +150,7 @@ export default new Vuex.Store({
       const params = {
         t: this.getters.qrCodeToken,
       };
-      const result = await HTTP(`${URL.activate}${this.getters.qrCodeId}`, 'POST', params);
+      const result = await HTTP(`${URL.create}${this.getters.qrCodeId}`, 'GET', params);
       if (result && result.e) {
         commit(ERROR_CHANGE, result.e);
         return false;
@@ -162,18 +162,18 @@ export default new Vuex.Store({
       const params = {
         t: this.getters.qrCodeToken,
       };
-      const result = await HTTP(`${URL.finish}${this.getters.qrCodeId}`, 'POST', params);
+      const result = await HTTP(`${URL.finish}${this.getters.qrCodeId}`, 'GET', params);
       if (result && result.e) {
         commit(ERROR_CHANGE, result.e);
         return false;
       }
-      return false;
+      return true;
     },
     async [SCAN_ACTIVATE]({ commit }) {
       const params = {
         t: this.getters.qrCodeToken,
       };
-      const result = await HTTP(`${URL.activate}${this.getters.qrCodeId}`, 'POST', params);
+      const result = await HTTP(`${URL.activate}${this.getters.qrCodeId}`, 'GET', params);
       if (result && result.e) {
         commit(ERROR_CHANGE, result.e);
         return false;
