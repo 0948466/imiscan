@@ -23,6 +23,7 @@
 
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex';
+import { variables } from '../config';
 
 import feetStart from '../assets/img/feet/04-start.png';
 import feet11 from '../assets/img/feet/feet-1-1.png';
@@ -93,7 +94,7 @@ export default {
 
       this[LOADING](true);
 
-      if (this.scanCount < 3) {
+      if (this.scanCount < variables.scanCountMax) {
         this.$router.push('description');
       } else {
         this.$router.push('completed');

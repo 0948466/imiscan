@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import HTTP from '../utils/api';
 import URL from '../utils/url';
-import errors from '../utils/errors';
+import { errors } from '../config';
 
 import {
   LOADING,
@@ -107,11 +107,17 @@ export default new Vuex.Store({
   actions: {
     async [AUTH_SING_IN]({ commit }, params) {
       const result = await HTTP(URL.singIn, 'GET', params);
+
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
-      } else {
-        commit(USER_CHANGE, result.user);
+        return false;
       }
+      if (!result || !result.user) {
+        commit(ERROR_CHANGE, 'Error retrieving user data, try again later');
+        return false;
+      }
+      commit(USER_CHANGE, result.user);
+      return true;
     },
     async [USER_EXIT]({ commit }) {
       const result = await HTTP(URL.userExit, 'GET');

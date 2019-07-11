@@ -20,9 +20,17 @@ export default (urlFrom, method = 'POST', params = {}, credentials = 'include') 
     mode: 'cors',
     body,
   })
-    .then(response => response.json())
+    .then((response) => {
+      if (response.status !== 200 && response.status !== 500) {
+        throw new Error('Problems on the server, try again later');
+      }
+      return response.json();
+    })
     .then(data => data)
-    .catch((error) => {
-      console.error(error);
+    .catch((e) => {
+      console.error(e);
+      return {
+        e,
+      };
     });
 };
