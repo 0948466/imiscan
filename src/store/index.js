@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import HTTP from '../utils/api';
 import URL from '../utils/url';
+import errors from '../utils/errors';
 
 import {
   LOADING,
@@ -176,7 +177,8 @@ export default new Vuex.Store({
       };
       const result = await HTTP(`${URL.activate}${this.getters.qrCodeId}`, 'GET', params);
       if (result && result.e) {
-        commit(ERROR_CHANGE, result.e);
+        const error = errors[result.e] || result.e;
+        commit(ERROR_CHANGE, error);
         return false;
       }
       return true;

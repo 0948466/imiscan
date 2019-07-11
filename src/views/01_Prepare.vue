@@ -34,7 +34,7 @@
           type="submit"
           class="btn btn_blue btn_bottom prepare__btn "
         >
-          Start scanning
+          Start
         </button>
       </form>
     </div>

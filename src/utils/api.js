@@ -20,12 +20,7 @@ export default (urlFrom, method = 'POST', params = {}, credentials = 'include') 
     mode: 'cors',
     body,
   })
-    .then((response) => {
-      if (response.status !== 200) {
-        return { e: 30002 };
-      }
-      return response.json();
-    })
+    .then(response => response.json())
     .then(data => data)
     .catch((error) => {
       console.error(error);
