@@ -146,13 +146,13 @@ export default {
   name: 'SingUpVue',
   components: { IconBack },
   data: () => ({
-    email: 'test@test2.test',
-    name: 'test2',
-    surname: 'test2',
-    password1: '123',
-    password2: '123',
-    sex: '1',
-    age: '1',
+    email: '',
+    name: '',
+    surname: '',
+    password1: '',
+    password2: '',
+    sex: null,
+    age: null,
     accept: true,
   }),
   computed: {
@@ -187,7 +187,7 @@ export default {
         return;
       }
       if (!this.sex) {
-        this.$store.commit(WARNING_CHANGE, 'You need to choose how old you are');
+        this.$store.commit(WARNING_CHANGE, 'Please select your gender');
         return;
       }
       if (!this.accept) {
