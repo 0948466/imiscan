@@ -26,7 +26,7 @@ import {
 
 Vue.use(Vuex);
 
-let user = '';
+let user = null;
 let qrCode = null;
 try {
   user = (localStorage.getItem('user') && JSON.parse(localStorage.getItem('user'))) || '';
@@ -149,6 +149,10 @@ export default new Vuex.Store({
       const result = await HTTP(URL.getUser, 'GET');
       if (result && result.error) {
         commit(ERROR_CHANGE, result.error);
+        return false;
+      }
+      if (!result || !result.user) {
+        commit(USER_EXIT);
         return false;
       }
       commit(USER_CHANGE, result.user);

@@ -10,10 +10,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import {
   SHOW_QUIT_CHANGE,
   QR_CODE_DELETE,
+  USER_GET,
 } from '@/store/mutation-types';
 import Notify from '@/components/Notify.vue';
 import Quit from '@/components/Quit.vue';
@@ -29,6 +30,9 @@ export default {
     ]),
   },
   beforeCreate() {
+    setTimeout(() => {
+      this[USER_GET]();
+    }, 0);
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     window.addEventListener('resize', () => {
@@ -44,6 +48,12 @@ export default {
         this.$store.commit(QR_CODE_DELETE);
       }
     };
+  },
+
+  methods: {
+    ...mapActions([
+      USER_GET,
+    ]),
   },
 };
 </script>

@@ -9,7 +9,6 @@
 <script>
 import {
   SHOW_QUIT_CHANGE,
-  QR_CODE_DELETE,
 } from '@/store/mutation-types';
 
 export default {
@@ -32,6 +31,9 @@ export default {
           return;
         case 'scan-qr-code':
           this.$router.push({ name: 'find-qr-code' });
+          return;
+        case 'error-qr-code':
+          this.$router.push({ name: 'scan-qr-code' });
           return;
         default:
           this.$store.commit(SHOW_QUIT_CHANGE, true);
