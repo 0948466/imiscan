@@ -95,7 +95,14 @@ export default {
     },
     onFormQrCodeSubmit() {
       this.$store.commit(QR_CODE_CHANGE, this.result);
-      if (!this.$store.getters.qrCodeToken) {
+      /* eslint-disable */
+      // polyfill
+      Number.isNaN = Number.isNaN || function(value) {
+        return typeof value === 'number' && isNaN(value);
+      };
+      /* eslint-enable */
+
+      if (!this.$store.getters.qrCodeToken || Number.isNaN(this.$store.getters.qrCodeId)) {
         this.$router.push({ name: 'error-qr-code' });
       } else {
         this.$router.push({ name: 'description' });

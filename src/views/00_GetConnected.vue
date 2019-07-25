@@ -37,7 +37,11 @@ export default {
   methods: {
     onGetConnectBtnClick() {
       this.$screenfullInit();
-      this.$router.push({ name: 'log-in' });
+      if (this.$store.getters.user) {
+        this.$router.push({ name: 'prepare' });
+      } else {
+        this.$router.push({ name: 'log-in' });
+      }
     },
   },
 };

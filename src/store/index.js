@@ -58,7 +58,7 @@ export default new Vuex.Store({
     error: state => state.error,
     showQuit: state => state.showQuit,
     qrCode: state => state.qrCode,
-    qrCodeId: state => ((state.qrCode) ? state.qrCode.split(';')[0] : null),
+    qrCodeId: state => ((state.qrCode) ? +state.qrCode.split(';')[0] : null),
     qrCodeToken: state => ((state.qrCode) ? state.qrCode.split(';')[1] : null),
     scanCount: state => state.scanCount,
     random: state => state.random,
