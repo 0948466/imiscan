@@ -171,6 +171,8 @@ export default new Vuex.Store({
         t: this.getters.qrCodeToken,
       };
       const result = await HTTP(`${URL.finish}${this.getters.qrCodeId}`, 'GET', params);
+      commit(QR_CODE_DELETE);
+
       if (result && result.e) {
         commit(ERROR_CHANGE, result.e);
         return false;

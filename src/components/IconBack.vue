@@ -35,7 +35,6 @@ export default {
           return;
         default:
           this.$store.commit(SHOW_QUIT_CHANGE, true);
-          this.$store.commit(QR_CODE_DELETE);
       }
     },
   },

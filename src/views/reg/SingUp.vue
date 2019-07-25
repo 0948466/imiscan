@@ -92,19 +92,19 @@
             Select one of the options
           </option>
           <option value="1">
-            11-16
+            11-16 age
           </option>
           <option value="2">
-            16-25
+            16-25 age
           </option>
           <option value="3">
-            25-35
+            25-35 age
           </option>
           <option value="4">
-            35-45
+            35-45 age
           </option>
           <option value="5">
-            45+
+            45+ age
           </option>
         </select>
 
@@ -159,22 +159,22 @@ export default {
     ...mapGetters(['user']),
   },
   mounted() {
-    const inputs = document.querySelectorAll('input');
-    const appInner = document.querySelector('.app__inner');
-    setTimeout(() => {
-      inputs.forEach((input) => {
-        input.addEventListener('focus', () => {
-          setTimeout(() => {
-            const inputTop = input.getBoundingClientRect().top;
-            const appInnerTop = appInner.getBoundingClientRect().top;
-            appInner.style.transform = `translateY(-${inputTop - appInnerTop - 100}px)`;
-          }, 0);
-        });
-        input.addEventListener('blur', () => {
-          appInner.style.transform = 'translateY(0)';
-        });
-      });
-    }, 500);
+    // const inputs = document.querySelectorAll('input');
+    // const appInner = document.querySelector('.app__inner');
+    // setTimeout(() => {
+    //   inputs.forEach((input) => {
+    //     input.addEventListener('focus', () => {
+    //       setTimeout(() => {
+    //         const inputTop = input.getBoundingClientRect().top;
+    //         const appInnerTop = appInner.getBoundingClientRect().top;
+    //         appInner.style.transform = `translateY(-${inputTop - appInnerTop - 100}px)`;
+    //       }, 0);
+    //     });
+    //     input.addEventListener('blur', () => {
+    //       appInner.style.transform = 'translateY(0)';
+    //     });
+    //   });
+    // }, 500);
   },
   methods: {
     ...mapActions([

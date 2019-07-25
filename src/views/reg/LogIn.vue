@@ -89,22 +89,22 @@ export default {
   mounted() {
     this[QR_CODE_CHANGE](null);
     this[SCAN_COUNT_CHANGE](0);
-    const inputs = document.querySelectorAll('input');
-    const appInner = document.querySelector('.app__inner');
-    setTimeout(() => {
-      inputs.forEach((input) => {
-        input.addEventListener('focus', () => {
-          setTimeout(() => {
-            const inputTop = input.getBoundingClientRect().top;
-            const appInnerTop = appInner.getBoundingClientRect().top;
-            appInner.style.transform = `translateY(-${inputTop - appInnerTop - 100}px)`;
-          }, 0);
-        });
-        // input.addEventListener('blur', () => {
-        //   appInner.style.transform = 'translateY(0)';
-        // });
-      });
-    }, 500);
+    // const inputs = document.querySelectorAll('input');
+    // const appInner = document.querySelector('.app__inner');
+    // setTimeout(() => {
+    //   inputs.forEach((input) => {
+    //     input.addEventListener('focus', () => {
+    //       setTimeout(() => {
+    //         const inputTop = input.getBoundingClientRect().top;
+    //         const appInnerTop = appInner.getBoundingClientRect().top;
+    //         appInner.style.transform = `translateY(-${inputTop - appInnerTop - 100}px)`;
+    //       }, 0);
+    //     });
+    // input.addEventListener('blur', () => {
+    //   appInner.style.transform = 'translateY(0)';
+    // });
+    //   });
+    // }, 500);
   },
   beforeDestroy() {
     const appInner = document.querySelector('.app__inner');
