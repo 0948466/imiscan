@@ -1,4 +1,3 @@
-import 'promise-polyfill/src/polyfill';
 import 'whatwg-fetch';
 
 export default (urlFrom, method = 'POST', params = {}, credentials = 'include') => {
