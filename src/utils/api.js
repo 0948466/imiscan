@@ -1,3 +1,6 @@
+import 'promise-polyfill/src/polyfill';
+import 'whatwg-fetch';
+
 export default (urlFrom, method = 'POST', params = {}, credentials = 'include') => {
   const baseUrl = (process.env.NODE_ENV !== 'development') ? 'https://imigize.ru' : 'http://localhost:3004';
   let body = null;
